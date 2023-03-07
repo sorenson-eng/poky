@@ -63,7 +63,9 @@ do_install_append () {
    fi
 
    # Ensure correct ownership for files copied in
-   chown root:root ${D}${sysconfdir}/stap-exporter/* -R
+   if [ -d ${D}${sysconfdir}/stap-exporter ]; then
+       chown root:root ${D}${sysconfdir}/stap-exporter/* -R
+   fi
 }
 
 BBCLASSEXTEND = "nativesdk"
